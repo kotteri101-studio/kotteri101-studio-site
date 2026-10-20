@@ -153,11 +153,14 @@
 </main>
 <script>
   (function(){
-    var lang = 'en';
+    var params = new URLSearchParams(location.search);
+    var fromQuery = params.get('lang');
+    var lang = (navigator.language || '').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en';
     try{
       var stored = localStorage.getItem('kotteri101-lang');
       if(stored === 'en' || stored === 'ja') lang = stored;
     }catch(e){}
+    if(fromQuery === 'en' || fromQuery === 'ja') lang = fromQuery;
     document.documentElement.setAttribute('lang', lang);
     document.querySelectorAll('.lang-block').forEach(function(block){
       block.classList.toggle('active', block.getAttribute('lang') === lang);
