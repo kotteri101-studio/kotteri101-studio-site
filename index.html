@@ -297,10 +297,10 @@
     white-space: nowrap;
   }
   .unit-pill .led{ width:6px; height:6px; animation:none; }
-  /* Only a live/available app's status dot actually glows -- an "in
-     development" one stays a plain flat dot so it doesn't visually read
-     as lit up/active. */
-  .unit--goldenear .unit-pill .led, .unit--hearing .unit-pill .led{ box-shadow: none; }
+  /* Only a live/available app's status dot is lit (brand color + glow) -- an
+     "in development" one is a plain gray dot so it doesn't visually read as
+     active. */
+  .unit--goldenear .unit-pill .led, .unit--hearing .unit-pill .led{ background: var(--ink-faint); box-shadow: none; }
 
   .unit h3{
     font-family: var(--font-display);
