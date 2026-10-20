@@ -501,7 +501,7 @@
         </div>
         <h3>WorKlock</h3>
         <p data-i18n="worklockDesc">An ambient desk clock where tiny construction vehicles work in a bed of falling sand — bulldozer, dump truck, helicopter, tornado — slowly burying the time. Unlock once, and touch the sand yourself.</p>
-        <a class="app-store-badge" href="https://apps.apple.com/app/worklock/id6818972102" target="_blank" rel="noopener" aria-label="Download WorKlock on the App Store">
+        <a class="app-store-badge" href="https://apps.apple.com/app/worklock/id6818972102" data-href-en="https://apps.apple.com/app/worklock/id6818972102" data-href-ja="https://apps.apple.com/jp/app/worklock/id6818972102" target="_blank" rel="noopener" aria-label="Download WorKlock on the App Store">
           <svg viewBox="0 0 119.66407 40" aria-hidden="true">
             <g>
               <g>
@@ -658,6 +658,10 @@
       });
       document.querySelectorAll('.lang-btn').forEach(function(b){
         b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false');
+      });
+      document.querySelectorAll('[data-href-en]').forEach(function(a){
+        var href = a.getAttribute(lang === 'ja' ? 'data-href-ja' : 'data-href-en');
+        if(href) a.setAttribute('href', href);
       });
       try{ localStorage.setItem('kotteri101-lang', lang); }catch(e){}
     }
