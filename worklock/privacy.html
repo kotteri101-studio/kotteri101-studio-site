@@ -58,10 +58,11 @@
     color: var(--text-dim);
     margin-bottom: 32px;
   }
-  .lang-block + .lang-block {
-    margin-top: 64px;
-    padding-top: 32px;
-    border-top: 2px solid var(--line);
+  .lang-block {
+    display: none;
+  }
+  .lang-block.active {
+    display: block;
   }
   ul {
     padding-left: 1.4em;
@@ -76,10 +77,6 @@
 </head>
 <body>
 <main>
-
-<div class="draft-note">
-  下書き(未公開)。公開前に日付・連絡先・文面を確認してください。 / Draft (not yet published). Review the date, contact address and wording before publishing.
-</div>
 
 <div class="lang-block" lang="ja">
   <h1>プライバシーポリシー</h1>
@@ -154,5 +151,18 @@
 </div>
 
 </main>
+<script>
+  (function(){
+    var lang = 'en';
+    try{
+      var stored = localStorage.getItem('kotteri101-lang');
+      if(stored === 'en' || stored === 'ja') lang = stored;
+    }catch(e){}
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('.lang-block').forEach(function(block){
+      block.classList.toggle('active', block.getAttribute('lang') === lang);
+    });
+  })();
+</script>
 </body>
 </html>

@@ -49,10 +49,11 @@
     font-size: 13px;
     margin-bottom: 32px;
   }
-  .lang-block + .lang-block {
-    margin-top: 64px;
-    padding-top: 32px;
-    border-top: 2px solid var(--line);
+  .lang-block {
+    display: none;
+  }
+  .lang-block.active {
+    display: block;
   }
   ul {
     padding-left: 1.4em;
@@ -143,5 +144,18 @@
 </div>
 
 </main>
+<script>
+  (function(){
+    var lang = 'en';
+    try{
+      var stored = localStorage.getItem('kotteri101-lang');
+      if(stored === 'en' || stored === 'ja') lang = stored;
+    }catch(e){}
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('.lang-block').forEach(function(block){
+      block.classList.toggle('active', block.getAttribute('lang') === lang);
+    });
+  })();
+</script>
 </body>
 </html>
