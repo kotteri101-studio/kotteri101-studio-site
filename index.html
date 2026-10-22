@@ -331,15 +331,31 @@
   .unit-link svg{ width: 12px; height: 12px; transition: transform 0.15s ease; flex: none; }
   .unit:hover .unit-link svg{ transform: translateX(3px); }
 
+  .store-badges{
+    display:flex;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
   .app-store-badge{
     display:inline-block;
     width: 120px;
-    margin-top: 10px;
     opacity: 0.92;
     transition: opacity 0.15s ease;
   }
   .app-store-badge:hover{ opacity: 1; }
   .app-store-badge svg{ display:block; width:100%; height:auto; }
+
+  .google-play-badge{
+    display:inline-block;
+    width: 135px;
+    opacity: 0.92;
+    transition: opacity 0.15s ease;
+  }
+  .google-play-badge:hover{ opacity: 1; }
+  .google-play-badge img{ display:block; width:100%; height:auto; }
 
   /* ---------- approach ---------- */
 
@@ -483,7 +499,7 @@
     </div>
     <p class="status-line"><span class="led" aria-hidden="true"></span><span data-i18n="statusLine">Tools that work for people who love music and quiet.</span></p>
     <p class="thesis">Small, well-made instruments for the background of your day.</p>
-    <p class="lede" data-i18n="lede">Kotteri101 Studio designs single-purpose iOS apps — a desk clock, a tone reference, a hearing check — each sold once, with no ads and no accounts. You set one up, and mostly forget it's there.</p>
+    <p class="lede" data-i18n="lede">Kotteri101 Studio designs single-purpose apps — a desk clock, a tone reference, a hearing check — each sold once, with no ads and no accounts. You set one up, and mostly forget it's there.</p>
   </header>
 
   <section aria-labelledby="units-heading">
@@ -501,6 +517,7 @@
         </div>
         <h3>WorKlock</h3>
         <p data-i18n="worklockDesc">An ambient desk clock where tiny construction vehicles work in a bed of falling sand — bulldozer, dump truck, helicopter, tornado — slowly burying the time. Unlock once, and touch the sand yourself.</p>
+        <div class="store-badges">
         <a class="app-store-badge" href="https://apps.apple.com/app/worklock/id6818972102" data-href-en="https://apps.apple.com/app/worklock/id6818972102" data-href-ja="https://apps.apple.com/jp/app/worklock/id6818972102" target="_blank" rel="noopener" aria-label="Download WorKlock on the App Store">
           <svg viewBox="0 0 119.66407 40" aria-hidden="true">
             <g>
@@ -548,6 +565,10 @@
             </g>
           </svg>
         </a>
+        <a class="google-play-badge" href="https://play.google.com/store/apps/details?id=com.worklock.app" target="_blank" rel="noopener" aria-label="Get WorKlock on Google Play">
+          <img data-src-en="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" data-src-ja="https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" />
+        </a>
+        </div>
         <a class="unit-link" href="/worklock/privacy.html"><span data-i18n="viewPrivacy">Privacy Policy</span>
           <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
         </a>
@@ -627,7 +648,7 @@
     var translations = {
       eyebrowHero: { en:"Studio homepage", ja:"スタジオ ホームページ" },
       statusLine: { en:"Tools that work for people who love music and quiet.", ja:"音楽と静寂を好む人のために働くツールたち" },
-      lede: { en:"Kotteri101 Studio designs single-purpose iOS apps — a desk clock, a tone reference, a hearing check — each sold once, with no ads and no accounts. You set one up, and mostly forget it's there.", ja:"Kotteri101 Studioは、単機能に絞ったiOSアプリを開発しています——卓上時計、音のリファレンス、聴力チェックなど。買い切り制で、広告もアカウント登録もありません。一度設定すれば、あとは存在を忘れるくらい静かに動きます。" },
+      lede: { en:"Kotteri101 Studio designs single-purpose apps — a desk clock, a tone reference, a hearing check — each sold once, with no ads and no accounts. You set one up, and mostly forget it's there.", ja:"Kotteri101 Studioは、単機能に絞ったアプリを開発しています——卓上時計、音のリファレンス、聴力チェックなど。買い切り制で、広告もアカウント登録もありません。一度設定すれば、あとは存在を忘れるくらい静かに動きます。" },
       eyebrowUnits: { en:"Applications", ja:"アプリケーション" },
       unitsHeading: { en:"The lineup", ja:"ラインナップ" },
       statusDev: { en:"In development", ja:"開発中" },
@@ -662,6 +683,10 @@
       document.querySelectorAll('[data-href-en]').forEach(function(a){
         var href = a.getAttribute(lang === 'ja' ? 'data-href-ja' : 'data-href-en');
         if(href) a.setAttribute('href', href);
+      });
+      document.querySelectorAll('[data-src-en]').forEach(function(img){
+        var src = img.getAttribute(lang === 'ja' ? 'data-src-ja' : 'data-src-en');
+        if(src) img.setAttribute('src', src);
       });
       try{ localStorage.setItem('kotteri101-lang', lang); }catch(e){}
     }
