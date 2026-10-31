@@ -360,6 +360,8 @@
   }
   .google-play-badge:hover{ opacity: 1; }
   .google-play-badge img{ display:block; width:100%; height:auto; }
+  /* the English badge PNG has ~6.3% transparent padding on each side (the Japanese one has none); pull it left so its visible edge lines up with the App Store badge */
+  html[lang="en"] .google-play-badge{ margin-left: -8.6px; }
 
   /* ---------- approach ---------- */
 
