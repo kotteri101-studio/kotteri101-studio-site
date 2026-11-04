@@ -278,11 +278,8 @@
     border: 1px solid var(--hairline-strong);
   }
 
-  .unit--worklock .led{ background: var(--amber); box-shadow: 0 0 8px 1px var(--amber); }
-  .unit--goldenear .led{ background: var(--teal); box-shadow: 0 0 8px 1px var(--teal); }
-  .unit--hearing .led{ background: var(--violet); box-shadow: 0 0 8px 1px var(--violet); }
-  .unit--golfclock .led{ background: var(--meadow); box-shadow: 0 0 8px 1px var(--meadow); }
-  .unit--memocalc .led{ background: var(--memo); box-shadow: 0 0 8px 1px var(--memo); }
+  /* every "available" lamp is amber; unreleased apps are overridden to grey below */
+  .unit .led{ background: var(--amber); box-shadow: 0 0 8px 1px var(--amber); }
 
   .unit-top{ display:flex; align-items:flex-start; justify-content:space-between; gap: 10px; }
 
